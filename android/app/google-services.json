@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "35802851491",
+    "project_id": "crudemployeeapp",
+    "storage_bucket": "crudemployeeapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35802851491:android:cba0e2bf421a9e9b29f716",
+        "android_client_info": {
+          "package_name": "com.crudemployee.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR3f5z8laozWG1l9GnP3JPmyHcxK3c038"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
