@@ -1,3 +1,7 @@
+import 'package:crudemployeeapp/screens/dash_board_screen.dart';
+import 'package:crudemployeeapp/screens/edit_employee_screen.dart';
+import 'package:crudemployeeapp/screens/employee_screen.dart';
+import 'package:crudemployeeapp/widget_tree.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +23,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       initialRoute: '/',
       routes: {
-        '/':(context)=>const DashBoardScreen(title: 'Dashboard'),
+        '/':(context)=>const WidgetTree(),
+        '/dash':(context)=>const DashBoardScreen(title: 'Dashboard'),
         '/add':(context)=>const EmployeeScreen(),
-        '/edit':(context)=>const EditEmployeeScreen();
+        '/edit':(context)=>const EditEmployeeScreen(),
       },
     );
   }
