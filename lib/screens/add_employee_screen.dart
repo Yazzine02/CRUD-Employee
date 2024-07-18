@@ -62,7 +62,7 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
                 ),
                 const SizedBox(height: 8.0,),
                 //age
-                Text("Age",style: textStyle,),
+                const Text("Age",style: textStyle,),
                 const SizedBox(height: 8.0,),
                 TextFormField(
                   controller: ageController,
@@ -79,7 +79,7 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
                 ),
                 //salary
                 const SizedBox(height: 8.0,),
-                Text("Salary",style: textStyle,),
+                const Text("Salary",style: textStyle,),
                 const SizedBox(height: 8.0,),
                 TextFormField(
                   controller: salaryController,
@@ -96,7 +96,7 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
                 ),
                 //Address
                 const SizedBox(height: 8.0,),
-                Text("Adress",style: textStyle,),
+                const Text("Adress",style: textStyle,),
                 const SizedBox(height: 8.0,),
                 TextFormField(
                   controller: addressController,
@@ -104,20 +104,12 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
                   //.copyWith() to add another field
                   decoration: inputDecoration.copyWith(hintText: 'Enter your address'),
                   validator: (value){
-                    if(value==null || value.isEmpty) {
-                      return "Please enter your adress";
-                    }
-                    else if(!RegExp(r'^([a-zA-Z\s]+),\s*([a-zA-Z0-9\s#]+),\s*([a-zA-Z\s]+)$').hasMatch(value)){
-                      return "Please enter a valid address (e.g.: Street name, Building Name, City Name)";
-                    } 
-                    else {
-                      return null;
-                    }
+                    return Address.validateAddress(value ?? '');
                   },
                 ),
                 //Traits
                 const SizedBox(height: 8.0,),
-                Text("Traits",style: textStyle,),
+                const Text("Traits",style: textStyle,),
                 const SizedBox(height: 8.0,),
                 TextFormField(
                   controller: traitsController,
@@ -187,6 +179,9 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
                         setState(() {
                           isLoading = false;
                         });
+                        // ignore: use_build_context_synchronously
+                        Navigator.of(context).popUntil((route) => route.isFirst);
+                        // ignore: use_build_context_synchronously
                         Navigator.pushReplacementNamed(context, '/dash');
                       }
                     }),

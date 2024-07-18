@@ -1,4 +1,6 @@
 import 'package:crudemployeeapp/models/employee.dart';
+import 'package:crudemployeeapp/screens/edit_employee_screen.dart';
+import 'package:crudemployeeapp/services/database/database_service.dart';
 import 'package:crudemployeeapp/styles/text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +14,12 @@ class EmployeeScreen extends StatefulWidget {
 }
 
 class _EmployeeScreenState extends State<EmployeeScreen> {
+  DatabaseService dbService = DatabaseService();
+
+  Future<void> _delete()async{
+    await dbService.removeEmployee(widget.employee);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,35 +30,34 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
         padding: const EdgeInsets.all(16),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Profile icon
-              CircleAvatar(
-                radius: 60,
-                child: Text(
-                  widget.employee.name[0], // Initial of the employee's name
-                  style: TextStyle(fontSize: 60),
+              Center(
+                child: CircleAvatar(
+                  radius: 60,
+                  child: Text(
+                    widget.employee.name[0], // Initial of the employee's name
+                    style: const TextStyle(fontSize: 60),
+                  ),
                 ),
               ),
               const SizedBox(height: 16.0),
+              //How do i make this to generate dynamically ? with a listview.separated ?
               // Name
-              const Text("Name:", style: textStyle),
-              const SizedBox(height: 8.0),
+              Text("Name:", style: textStyle.copyWith(decoration: TextDecoration.underline, fontSize: 30)),
               Text(widget.employee.name, style: textStyle),
               const SizedBox(height: 16.0),
               // Age
-              const Text("Age:", style: textStyle),
-              const SizedBox(height: 8.0),
+              Text("Age:", style: textStyle.copyWith(decoration: TextDecoration.underline, fontSize: 30)),
               Text(widget.employee.age.toString(), style: textStyle),
               const SizedBox(height: 16.0),
               // Salary
-              const Text("Salary:", style: textStyle),
-              const SizedBox(height: 8.0),
+              Text("Salary:", style: textStyle.copyWith(decoration: TextDecoration.underline, fontSize: 30)),
               Text(widget.employee.salary.toString(), style: textStyle),
               const SizedBox(height: 16.0),
               // Address
-              const Text("Address:", style: textStyle),
-              const SizedBox(height: 8.0),
+              Text("Address:", style: textStyle.copyWith(decoration: TextDecoration.underline, fontSize: 30)),
               Text(
                 "${widget.employee.address.streetName}, ${widget.employee.address.cityName}",
                 style: textStyle,
@@ -64,6 +71,8 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to edit screen
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>EditEmployeeScreen(employeeId: widget.employee.id))); 
                     },
                     child: const Row(
                       children: [
@@ -78,7 +87,9 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                   ElevatedButton(
                     onPressed: () {
                       // Perform delete operation
-                    },
+                      _delete();
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                      Navigator.pushReplacementNamed(context, '/dash');                    },
                     child: const Row(
                       children: [
                         Text("Delete"),

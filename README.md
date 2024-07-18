@@ -18,12 +18,18 @@ samples, guidance on mobile development, and a full API reference.
 ## Ressources
 <a></a>
 
-## Things to work on
+## Things to work more on
 <ul>
     <li><p>How to manage forms</p></li>
     <li><p>How to use listView.separated</p></li>
     <li><p>More firestore database and firebase auth projects</p></li>
     <li><p>Profficiency on regular expressions</p></li>
     <li><p>Get to know all types of widget navigationan how to send data between them</p></li>
-    <li><p>How Dismissale works</p></li>
+    <li><p>How Dismissable works</p></li>
 </ul>
+
+## Next Project
+<ol>
+    <li>Fully functional chat app</li>
+    <li>E-commerce app</li>
+</ol>
