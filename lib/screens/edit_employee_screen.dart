@@ -186,8 +186,6 @@ class _EditEmployeeScreenState extends State<EditEmployeeScreen> {
                           isLoading = false;
                         });
                         // ignore: use_build_context_synchronously
-                        Navigator.of(context).popUntil((route) => route.isFirst);
-                        // ignore: use_build_context_synchronously
                         Navigator.pushReplacementNamed(context, '/dash');
                       }
                     }),

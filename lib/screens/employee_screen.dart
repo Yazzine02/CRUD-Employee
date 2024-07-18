@@ -1,5 +1,4 @@
 import 'package:crudemployeeapp/models/employee.dart';
-import 'package:crudemployeeapp/screens/edit_employee_screen.dart';
 import 'package:crudemployeeapp/services/database/database_service.dart';
 import 'package:crudemployeeapp/styles/text_style.dart';
 import 'package:flutter/material.dart';
@@ -71,8 +70,7 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to edit screen
-                      Navigator.of(context).popUntil((route) => route.isFirst);
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>EditEmployeeScreen(employeeId: widget.employee.id))); 
+                      Navigator.pushNamed(context, '/edit', arguments: widget.employee.id); 
                     },
                     child: const Row(
                       children: [
@@ -88,7 +86,7 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
                     onPressed: () {
                       // Perform delete operation
                       _delete();
-                      Navigator.of(context).popUntil((route) => route.isFirst);
+                      //Navigator.of(context).popUntil((route) => route.isFirst);
                       Navigator.pushReplacementNamed(context, '/dash');                    },
                     child: const Row(
                       children: [

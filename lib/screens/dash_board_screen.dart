@@ -1,5 +1,4 @@
 import 'package:crudemployeeapp/models/employee.dart';
-import 'package:crudemployeeapp/screens/employee_screen.dart';
 import 'package:crudemployeeapp/services/database/database_service.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +84,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               borderRadius: BorderRadius.circular(16.0)),
                           child: ListTile(
                           onTap:() {
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>EmployeeScreen(employee: retrievedEmployeeList![index])));
+                            Navigator.pushNamed(context, '/view',arguments:retrievedEmployeeList![index]);
                             //Navigator.pushNamed(context, "/edit", arguments: retrievedEmployeeList![index]);
                           },
                           shape: RoundedRectangleBorder(

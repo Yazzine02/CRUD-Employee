@@ -1,5 +1,8 @@
+import 'package:crudemployeeapp/models/employee.dart';
 import 'package:crudemployeeapp/screens/dash_board_screen.dart';
 import 'package:crudemployeeapp/screens/add_employee_screen.dart';
+import 'package:crudemployeeapp/screens/edit_employee_screen.dart';
+import 'package:crudemployeeapp/screens/employee_screen.dart';
 import 'package:crudemployeeapp/widget_tree.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +30,21 @@ class MyApp extends StatelessWidget {
         '/add':(context)=>const AddEmployeeScreen(),
         //'/view':(context)=>const EmployeeScreen(),
         //'/edit':(context)=>const EditEmployeeScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if(settings.name=='/view'){
+          final args = settings.arguments as Employee;
+          return MaterialPageRoute(builder: (context){
+            return EmployeeScreen(employee: args);
+          });
+        }
+        else if(settings.name=='/edit'){
+          final args = settings.arguments as String;
+          return MaterialPageRoute(builder: (context){
+            return EditEmployeeScreen(employeeId: args);
+          });
+        }
+        return null;
       },
     );
   }
