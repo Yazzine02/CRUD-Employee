@@ -27,7 +27,7 @@ class Employee {
       'employeeTraits': employeeTraits
     };
   }
-
+  //from database to employee
   Employee.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc)
       : id = doc.id,
         name = doc.data()!["name"],

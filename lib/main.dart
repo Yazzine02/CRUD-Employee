@@ -1,6 +1,7 @@
 import 'package:crudemployeeapp/screens/dash_board_screen.dart';
 import 'package:crudemployeeapp/screens/edit_employee_screen.dart';
 import 'package:crudemployeeapp/screens/employee_screen.dart';
+import 'package:crudemployeeapp/screens/add_employee_screen.dart';
 import 'package:crudemployeeapp/widget_tree.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +20,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "CRUD Firebase tutorial",
+      title: "Employee Management",
       theme: ThemeData.dark(),
       initialRoute: '/',
       routes: {
         '/':(context)=>const WidgetTree(),
         '/dash':(context)=>const DashBoardScreen(title: 'Dashboard'),
-        '/add':(context)=>const EmployeeScreen(),
+        '/add':(context)=>const AddEmployeeScreen(),
+        //'/view':(context)=>const EmployeeScreen(),
         '/edit':(context)=>const EditEmployeeScreen(),
       },
     );

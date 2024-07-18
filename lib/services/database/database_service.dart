@@ -17,8 +17,13 @@ class DatabaseService {
   }
   //get all employees
   Future<List<Employee>> retrieveEmployees() async{
+    /*
+    _db.collection("Employees").get() is an asynchronous call to Firestore to fetch all documents from the "Employees" collection.
+    The result of this call is stored in the snapshot variable, which is of type QuerySnapshot<Map<String, dynamic>>. 
+    This type indicates that the snapshot contains a collection of documents, each represented as a map with string keys and dynamic values.
+    */
     QuerySnapshot<Map<String,dynamic>> snapshot = await _db.collection("Employees").get();
-    //WTF????
+    //transforming each document snapshot into an employee using .map
     return snapshot.docs
         .map((docSnapshot) => Employee.fromDocumentSnapshot(docSnapshot))
         .toList();

@@ -1,5 +1,4 @@
 import 'package:crudemployeeapp/screens/dash_board_screen.dart';
-import 'package:crudemployeeapp/screens/employee_screen.dart';
 import 'package:crudemployeeapp/screens/login_or_register_screen.dart';
 import 'package:crudemployeeapp/services/authentification/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class _WidgetTreeState extends State<WidgetTree> {
     return StreamBuilder(
       stream: AuthService().authStateChanges,
       builder: (context,snapshot){
-        if(snapshot.hasData){return const EmployeeScreen()/*DashBoardScreen(title: 'Dashboard')*/;}
+        if(snapshot.hasData){return const DashBoardScreen(title: 'Dashboard');}
         else{return const LoginOrRegisterScreen();}
       }
     );
